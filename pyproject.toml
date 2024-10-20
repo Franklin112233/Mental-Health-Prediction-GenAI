@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "src"
+version = "0.1.0"
+description = "Python project aims to predict mental health with machine learning and GenAI models."
+authors = ["Linlin Yu"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.14"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+include = ["pyproject.toml", "src/*", "tests/*"]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.format]
+quote-style = "double"
+line-ending = "auto"
+exclude = ["*.ipynb"]
+
+[tool.ruff.lint]
+select = ["ALL", "RUF100"]
+exclude = ["*.ipynb"]
+fixable = ["ALL"]
+unfixable = []
+ignore = [
+    "D203",
+    "D213",
+    "COM812",
+    "ISC001",
+    "S101",
+    "D100",
+    "D103",
+    "ERA001",
+    "D105",
+    "D107",
+]
