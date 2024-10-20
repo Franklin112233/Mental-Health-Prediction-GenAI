@@ -20,21 +20,42 @@ with Path(f"{Path(__file__).resolve().parent}/config.yml").open() as f:
 
 
 def create_sample_data(
-    data_file: pd.DataFrame,
+    data_file: pd.DataFrame = config["raw_data_file"],
     fraction: float = config["sample_fraction"],
     random_state: int = config["random_state"],
 ) -> tuple:
     return (
-        pd.read_csv(Path(DATA_DIR, data_file), index_col=0)
+        pd.read_csv(Path(DATA_DIR, data_file))
         .sample(frac=fraction, random_state=random_state)
         .reset_index(drop=True)
+        .rename(
+            columns={
+                "Unnamed: 0": "index",
+                "Name": "name",
+                "Age": "age",
+                "Marital Status": "marital_status",
+                "Education Level": "education_level",
+                "Number of Children": "num_of_children",
+                "Smoking Status": "smoking_status",
+                "Physical Activity Level": "physical_activity_level",
+                "Employment Status": "employment_status",
+                "Income": "income",
+                "Alcohol Consumption": "alcohol_consumption",
+                "Dietary Habits": "dietary_habits",
+                "Sleeping Patterns": "sleeping_patterns",
+                "History of Mental Illness": "history_of_mental_illness",
+                "History of Substance Abuse": "history_of_substance_abuse",
+                "Family History of Depression": "family_history_of_depression",
+                "Chronic Medical Conditions": "chronic_medical_conditions",
+            }
+        )
         .to_csv(Path(DATA_DIR, "depression_data_sample.csv", index=False)),
         logger.info(f"Sample data created with fraction {fraction}"),
         logger.info(f"Sample data saved: {DATA_DIR}/depression_data_sample.csv"),
     )
 
 
-def create_data_profile(data_file: pd.DataFrame) -> None:
+def create_data_profile(data_file: pd.DataFrame = config["sample_data_file"]) -> None:
     from ydata_profiling import ProfileReport
 
     df_to_profile = pd.read_csv(Path(DATA_DIR, data_file), index_col=0)
@@ -48,4 +69,5 @@ def create_data_profile(data_file: pd.DataFrame) -> None:
 
 
 if __name__ == "__main__":
-    create_data_profile("depression_data_sample.csv")
+    create_sample_data()
+    create_data_profile()

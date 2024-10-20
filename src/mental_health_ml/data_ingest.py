@@ -1,0 +1,25 @@
+import logging
+from pathlib import Path
+
+import pandas as pd
+from zenml import step
+
+from src.mental_health_ml.utils import DATA_DIR, config
+
+
+class IngestData:
+    def __init__(self) -> None:
+        pass
+
+    def get_data(self) -> pd.DataFrame:
+        return pd.read_csv(Path(DATA_DIR, config["sample_data_file"]), index_col=0)
+
+
+@step
+def ingest_data() -> pd.DataFrame:
+    try:
+        ingest_data = IngestData()
+        return ingest_data.get_data()
+    except Exception:
+        logging.exception("An error occurred during data processing")
+        raise

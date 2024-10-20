@@ -1,4 +1,4 @@
-,Name,Age,Marital Status,Education Level,Number of Children,Smoking Status,Physical Activity Level,Employment Status,Income,Alcohol Consumption,Dietary Habits,Sleep Patterns,History of Mental Illness,History of Substance Abuse,Family History of Depression,Chronic Medical Conditions
+,name,age,marital_status,education_level,num_of_children,smoking_status,physical_activity_level,employment_status,income,alcohol_consumption,dietary_habits,Sleep Patterns,history_of_mental_illness,history_of_substance_abuse,family_history_of_depression,chronic_medical_conditions
 0,Brian Morgan,24,Single,Bachelor's Degree,0,Non-smoker,Active,Employed,62528.7,Moderate,Moderate,Good,Yes,No,No,Yes
 1,Adrienne Garcia,40,Married,Associate Degree,0,Current,Moderate,Employed,59709.36,Moderate,Unhealthy,Good,No,No,No,No
 2,Tyler Thomas,26,Single,Associate Degree,0,Former,Sedentary,Employed,52011.14,Low,Moderate,Good,Yes,No,No,No

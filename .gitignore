@@ -162,7 +162,14 @@ cython_debug/
 #.idea/
 
 # Raw data files
-data/depression_data_raw.csv
+data/depression_data.csv
 
 # Poetry lock file
 poetry.lock
+
+# jupyter notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# mlflow runs
+mlruns/*
