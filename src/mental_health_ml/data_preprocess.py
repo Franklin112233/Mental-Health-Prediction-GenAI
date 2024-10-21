@@ -4,7 +4,6 @@ from typing import Annotated
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from zenml import step
 
 from src.mental_health_ml.utils import config
 
@@ -55,7 +54,6 @@ class DataPreprocessor:
         return self.strategy.handle_data(self.df)
 
 
-@step
 def preprocess_data(
     data: pd.DataFrame,
 ) -> tuple[
